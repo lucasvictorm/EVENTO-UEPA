@@ -71,3 +71,38 @@ section{
     display: flex;
     justify-content: center;
 }
+
+.div-borda-cinza{
+    border-bottom: 4px solid #d0d0d0;
+}
+
+.subtitulo-azul{
+    color: #0080b9;
+}
+
+.div-apoiador{
+    padding: 10px 0;
+    display: flex;
+    gap: 5px;
+
+    & .textos{
+        text-align: end;
+    }
+
+    & .textos h3{
+        text-align: center;
+    }
+    
+}
+
+.apoiador-logo{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 200px;
+    
+}
+
+.apoiador-logo img{
+    width: 100%;
+}
