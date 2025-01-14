@@ -13,14 +13,18 @@
     font-family: 'Figtree', sans-serif;
 }
 
+html{
+    scroll-behavior: smooth;
+}
+
 .parallax{
     height: 200px;
-    background-image: url('./parallax2.jpg');
+    background-image: url('./imagens/parallax2.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     display: flex;
     align-items: end;
-    background-size: 100%;
+    background-size:cover;
     padding: 20px;
 
     & h1{
@@ -105,4 +109,21 @@ section{
 
 .apoiador-logo img{
     width: 100%;
+}
+
+@media (max-width: 768px) {
+    .div-apoiador {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+
+        & .textos{
+            text-align: center;
+        }
+    }
+
+    .apoiador-logo {
+        margin-bottom: 15px;
+    }
+    
 }
