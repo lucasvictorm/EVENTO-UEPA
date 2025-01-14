@@ -23,43 +23,55 @@
             
         </div>
         <div id="div-form" class="container">
-            
-            <h2>Cadastro</h2>
+            <div id="div-formulario-principal">
+                <h2>Cadastro</h2>
             <p>Entre com seus dados</p>
-            <form>
+            <form id="formulario" class="needs-validation" novalidate>
                 <div class="row g-3">
+                    
                     <div class="col-6">
                         <label for="nome" class="form-label">Nome Completo</label>
-                      <input type="text" class="form-control" aria-label="Nome completo" id="nome">
+                      <input  type="text" class="form-control" aria-label="Nome completo" id="nome" required>
+                      <div class="invalid-feedback">
+                        Preencha seu nome
+                      </div>
                     </div>
                     <div class="col-6">
                         <label for="cpf" class="form-label">CPF</label>
-                      <input type="number" class="form-control" aria-label="CPF" id="cpf">
+                      <input required type="number" class="form-control" aria-label="CPF" id="cpf">
+                      <div class="invalid-feedback">
+                        Preencha seu CPF
+                      </div>
                     </div>
+
                     <div class="col-6">
                         <label for="data-nascimento" class="form-label">Data de nascimento</label>
-                        <input type="date" class="form-control" id="data-nascimento">
-
-                        
-
-                        
+                        <input required type="date" class="form-control" id="data-nascimento">
+                        <div class="invalid-feedback">
+                            Informe sua data de nascimento
+                          </div>
+       
                     </div>
 
                     <div class="col-6">
                         <label for="categoria" class="form-label">Categoria</label>
-                        <select class="form-select" name="categoria" id="Categoria">
+                        <select required class="form-select" name="categoria" id="Categoria">
                             <option value="estudante">Estudante</option>
                             <option value="professor">Professor</option>
                             <option value="pesquisador">Pesquisador</option>
 
 
                         </select>
+                        
                     </div>
 
                     
                         <div class="col-6">
                             <label for="email" class="form-label">Email</label>
-                          <input type="email" class="form-control" aria-label="email" id="email">
+                          <input required type="email" class="form-control" aria-label="email" id="email">
+                          <div class="invalid-feedback">
+                            Informe um email válido
+                          </div>
                         </div>
 
                         
@@ -129,13 +141,21 @@
                     </div>
                   </div>
                   <div id="div-confirmar">
-                    <button class="btn" id="botao-confirmar">Confirmar inscrição</button>
+                    <button class="btn" type="submit" id="botao-confirmar">Confirmar inscrição</button>
                   </div>
                   
                   
 
             </form>
+            </div>
             
+            
+            
+        <div id="div-confirmacao" class="container">
+            <img src="imagens/checked.png" alt="Imagem de confirmação">
+            <p>Inscrição realizada com sucesso!</p>
+            <a href="index.html" class="btn">Retornar para a tela principal</a>
+        </div>
         </div>
        
     </main>
@@ -145,6 +165,8 @@
     
 
 </body>
+
+
 
 <script>
     function selecionarMinicurso(linha, event) {
@@ -179,9 +201,37 @@
         document.getElementById('total').innerText = totalAtual.toFixed(2).replace('.', ',');
     }
       
-    document.getElementById('botao-confirmar').addEventListener('click', event => {
+    /*document.getElementById('formulario').addEventListener('submit', event => {
+        
         event.preventDefault();
-    });
+        document.getElementById('div-formulario-principal').style.display = 'none';
+        document.getElementById('div-confirmacao').style.display = 'flex';
 
+    });
+*/
+    (() => {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }else{
+        event.preventDefault()
+        document.getElementById('div-formulario-principal').style.display = 'none';
+        document.getElementById('div-confirmacao').style.display = 'flex';
+      }
+
+      form.classList.add('was-validated')
+    }, false)
+  })
+})()
 </script>
+
+  
 </html>
