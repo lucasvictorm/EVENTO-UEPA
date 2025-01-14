@@ -18,6 +18,10 @@ footer {
     height: 60px;
 }
 
+#youtube-logo{
+    width: 40px;
+}
+
 .footer-info {
     text-align: center;
     font-size: 14px;
@@ -37,4 +41,12 @@ footer {
 
 .footer-links img:hover {
     transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+    .footer-container{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
 }
