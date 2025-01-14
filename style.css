@@ -1,3 +1,4 @@
+/*define uma fonte de arquivo*/
 @font-face {
     font-family: 'Figtree';
     src: 
@@ -6,6 +7,7 @@
     font-style: normal;
   }
 
+/*reseta valores padrões*/
 *{
     box-sizing: border-box;
     margin: 0;
@@ -13,10 +15,12 @@
     font-family: 'Figtree', sans-serif;
 }
 
+/*suaviza a rolagem*/
 html{
     scroll-behavior: smooth;
 }
 
+/*configura efeito parallax*/
 .parallax{
     height: 200px;
     background-image: url('./imagens/parallax2.jpg');
@@ -28,12 +32,13 @@ html{
     padding: 20px;
 
     & h1{
+        padding-left:5%;
         color: white;
-
+        
     }
 }
 
-
+/*padroniza as sections*/
 section{
     margin: auto;
     max-width: 90vw;
@@ -44,6 +49,28 @@ section{
         font-size: 1.1em;
         margin-bottom: 10px;
     }
+}
+
+#div-imagens{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px 0;
+    align-items: center;
+   justify-content: center;
+
+    & img{
+        width: 100%;
+        max-width: 200px;
+        border-radius: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    #div-imagens img{
+        max-width: 400px;
+    }
+    
 }
 
 .subtitulo{
@@ -63,6 +90,8 @@ section{
     display: block;
     height: 4px;
     width: 16%;
+    margin: auto;
+    margin-top: 40px;
     background-color: #e20712;
 }
 
