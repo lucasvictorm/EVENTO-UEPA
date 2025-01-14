@@ -32,6 +32,7 @@ html{
     padding: 20px;
 
     & h1{
+        text-shadow: 5px 2px 7px black;;
         padding-left:5%;
         color: white;
         
@@ -159,4 +160,15 @@ section{
         margin-bottom: 15px;
     }
     
+}
+
+#logo-uepa{
+    text-align: center;
+    padding-top: 20px;
+
+}
+
+#logo-uepa img{
+    width: 100%;
+    max-width: 200px;
 }
