@@ -200,30 +200,38 @@
 })()
 
 
-// Função para formatar o CPF
-function formatarCPF(cpf) {
-    // Remove tudo que não for número
-    cpf = cpf.replace(/\D/g, '');
+// Função para formatar e permitir apenas 11 números no CPF
+document.getElementById('cpf').addEventListener('input', function(e) {
+    let cpf = e.target.value.replace(/\D/g, ''); // Remove tudo que não for número
 
-    // Limita o CPF a 11 dígitos
-    if (cpf.length <= 3) {
-        return cpf;
-    } else if (cpf.length <= 6) {
-        return cpf.replace(/(\d{3})(\d{1,3})/, '$1.$2');
-    } else if (cpf.length <= 9) {
-        return cpf.replace(/(\d{3})(\d{3})(\d{1,3})/, '$1.$2.$3');
-    } else {
-        return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{1,2})/, '$1.$2.$3-$4');
+    // Limita a quantidade de números a 11
+    if (cpf.length > 11) {
+        cpf = cpf.substring(0, 11);
     }
-}
+
+    // Formatar o CPF com pontos e traços
+    if (cpf.length > 6) {
+        cpf = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{1})/, '$1.$2.$3-$4');
+    } else if (cpf.length > 3) {
+        cpf = cpf.replace(/(\d{3})(\d{3})(\d{1})/, '$1.$2.$3');
+    } else {
+        cpf = cpf.replace(/(\d{3})(\d{1})/, '$1.$2');
+    }
+
+    e.target.value = cpf; // Atualiza o campo com o CPF formatado
+});
+
+// Manipulador de envio do formulário de inscrição para validar o CPF
+document.getElementById('formulario').addEventListener('submit', function(event) {
+    const cpf = document.getElementById('cpf').value.replace(/\D/g, ''); // Remove caracteres não numéricos
+
+});
 
 // Função para validar o CPF
 function validarCPF(cpf) {
-    cpf = cpf.replace(/\D/g, ''); // Remove tudo que não for número
-
-    // Verifica se o CPF tem 11 dígitos e não é uma sequência repetida
+    // Valida o CPF
     if (cpf.length !== 11 || /^(\d)\1{10}$/.test(cpf)) {
-        return false;
+        return false; // CPF com todos os números iguais é inválido
     }
 
     let soma = 0;
@@ -239,11 +247,11 @@ function validarCPF(cpf) {
         resto = 0;
     }
     if (resto !== parseInt(cpf.charAt(9))) {
-        return false;
+        return false; // Primeiro dígito verificador inválido
     }
 
     soma = 0;
-    
+    // Validação do segundo dígito verificador
     for (let i = 0; i < 10; i++) {
         soma += parseInt(cpf.charAt(i)) * (11 - i);
     }
@@ -253,108 +261,12 @@ function validarCPF(cpf) {
         resto = 0;
     }
     if (resto !== parseInt(cpf.charAt(10))) {
-        return false;
+        return false; // Segundo dígito verificador inválido
     }
 
-    return true;
+    return true; // CPF válido
 }
 
-/
-document.getElementById('cpf').addEventListener('input', function() {
-    const cpfInput = document.getElementById('cpf');
-    cpfInput.value = formatarCPF(cpfInput.value);
-});
-
-
-document.getElementById('formulario').addEventListener('submit', function(event) {
-    const cpf = document.getElementById('cpf').value.replace(/\D/g, ''); 
-
-    if (cpf.length !== 11) {
-        event.preventDefault();
-        alert("O CPF deve conter exatamente 11 números.");
-        return;
-    }
-
-    if (!validarCPF(cpf)) {
-        event.preventDefault();
-        alert("Por favor, insira um CPF válido.");
-    }
-});
-
-document.getElementById('cpf').addEventListener('input', function(e) {
-    let cpf = e.target.value.replace(/\D/g, ''); 
-
-    
-    if (cpf.length > 11) {
-        cpf = cpf.substring(0, 11);
-    }
-
-    
-    if (cpf.length > 6) {
-        cpf = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{1})/, '$1.$2.$3-$4');
-    } else if (cpf.length > 3) {
-        cpf = cpf.replace(/(\d{3})(\d{3})(\d{1})/, '$1.$2.$3');
-    } else {
-        cpf = cpf.replace(/(\d{3})(\d{1})/, '$1.$2');
-    }
-
-    e.target.value = cpf; 
-})
-
-document.getElementById('formulario').addEventListener('submit', function(event) {
-    const cpf = document.getElementById('cpf').value.replace(/\D/g, ''); 
-
-    if (cpf.length !== 11) {
-        event.preventDefault();
-        alert("O CPF deve conter exatamente 11 números.");
-        return;
-    }
-
-    if (!validarCPF(cpf)) {
-        event.preventDefault();
-        alert("Por favor, insira um CPF válido.");
-    }
-});
-
-
-function validarCPF(cpf) {
-    
-    if (cpf.length !== 11 || /^(\d)\1{10}$/.test(cpf)) {
-        return false; 
-    }
-
-    let soma = 0;
-    let resto;
-
-   
-    for (let i = 0; i < 9; i++) {
-        soma += parseInt(cpf.charAt(i)) * (10 - i);
-    }
-
-    resto = (soma * 10) % 11;
-    if (resto === 10 || resto === 11) {
-        resto = 0;
-    }
-    if (resto !== parseInt(cpf.charAt(9))) {
-        return false;
-    }
-
-    soma = 0;
-    
-    for (let i = 0; i < 10; i++) {
-        soma += parseInt(cpf.charAt(i)) * (11 - i);
-    }
-
-    resto = (soma * 10) % 11;
-    if (resto === 10 || resto === 11) {
-        resto = 0;
-    }
-    if (resto !== parseInt(cpf.charAt(10))) {
-        return false; 
-    }
-
-    return true; 
-}
 
 
 

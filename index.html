@@ -91,59 +91,8 @@
         <div id="div-mapa"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.657518456276!2d-48.31740572527526!3d-1.3821355986047987!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x92a48c711a8a5977%3A0xb8d72e7e13117674!2sUEPA%20-%20Universidade%20do%20Estado%20do%20Par%C3%A1%20-%20Campus%20V%20CCNT%20(Centro%20de%20Ci%C3%AAncias%20Naturais%20e%20Tecnologia)!5e0!3m2!1spt-BR!2sbr!4v1736818897513!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
     </section>
 
-    <!--Bloco de cronograma-->
-    <section class="container" id="cronograma">
-        <h2 id="cronograma-subtitulo">Cronograma</h2>
-        <div class="cronograma-wrapper">
-            <!--Cabeçalho do cronograma-->
-            <div class="cronograma-header">
-                <span class="timee">Horário</span>
-                <span class="activityy">Atividade</span>
-                <span class="locationn">Local</span>
-            </div>
-        </div>
-    </section>
 
-    <!--Bloco onde ficam os parceiros-->
-    <section id="parceiros">
-        <!--Subtitulo em uma div que define uma borda cinza-->
-        <div class="div-borda-cinza">
-            <h2 class="subtitulo-azul">Parceiros</h2>
-        </div>
-        <!--div individual do apoiador-->
-        <div class="div-apoiador div-borda-cinza">
-            <div class="apoiador-logo">
-                <img src="imagens/Meta-Logo.png" alt="Logo Meta">
-            </div>
-            <div class="textos">
-                <h3>Meta</h3>
-                <p>A Meta, fundada por Mark Zuckerberg, é a empresa por trás de Facebook, Instagram, WhatsApp e Messenger. Com inovação constante, a Meta conecta o mundo de novas maneiras.</p>
-            </div>
-        </div>
-
-        <div class="div-apoiador div-borda-cinza">
-            <div id="starlink-logo" class="apoiador-logo">
-                <img src="imagens/starlink-logo.png" alt="Logo Meta">
-            </div>
-            <div class="textos">
-                <h3>Starlink</h3>
-                <p>A Starlink, da SpaceX, oferece internet de alta velocidade via satélite para qualquer lugar do mundo. Ideal para áreas remotas, garante baixa latência e conexão estável.</p>
-            </div>
-        </div>
-
-        <div class="div-apoiador">
-            <div class="apoiador-logo">
-                <img src="imagens/google-logo.png" alt="Logo Google">
-            </div>
-            <div class="textos">
-                <h3>Google</h3>
-                <p>O Google é líder em inovação tecnológica, oferecendo pesquisa online, Gmail, Google Maps, YouTube e muito mais. Com uma missão de organizar as informações do mundo, o Google facilita sua vida diária.</p>
-                
-                
-            </div>
-        </div>
-        
-    </section>
+    
 
     <section>
         <div class="div-borda-cinza">
@@ -181,53 +130,6 @@
         document.getElementById('footer-div').innerHTML = data;
       });
 
-      let cronograma = [
-        {
-            "time": "08:00 - 09:00",
-            "activity": "Credenciamento",
-            "location": "Hall de Entrada"
-        },
-        {
-            "time": "09:00 - 10:30",
-            "activity": "Palestra de Abertura: \"O Futuro da Engenharia de Software\"",
-            "location": "Auditório Principal"
-        },
-        {
-            "time": "10:30 - 11:00",
-            "activity": "Coffee Break",
-            "location": "Espaço de Convivência"
-        },
-        {
-            "time": "11:00 - 12:30",
-            "activity": "Workshops Técnicos",
-            "location": "Salas 101, 102, 103"
-        },
-        {
-            "time": "12:30 - 14:00",
-            "activity": "Intervalo para Almoço",
-            "location": "Refeitório"
-        },
-        {
-            "time": "14:00 - 15:30",
-            "activity": "Apresentação de Trabalhos",
-            "location": "Salas 201, 202"
-        },
-        {
-            "time": "15:30 - 16:00",
-            "activity": "Encerramento e Premiação",
-            "location": "Auditório Principal"
-        }
-    ]
-
-    //cria o cronograma dinamicamente
-    let divCronograma = document.getElementById('cronograma');
-        
-    cronograma.forEach(item => {
-        divCronograma.innerHTML += `<div class="cronograma-item">
-                <span class="time">${item.time}</span>
-                <span class="activity">${item.activity}</span>
-                <span class="location">${item.location}</span>
-            </div>`
-    })
+      
 </script>
 </html>

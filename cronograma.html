@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cronograma</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="cronograma.css">
+</head>
+
+<body>
+    <!--div onde será carregado o cabeçalho remotamente-->
+    <div id="header-div"></div>
+    
+    <!--Bloco de cronograma-->
+    <section class="container" id="cronograma">
+        <h2 id="cronograma-subtitulo">Cronograma</h2>
+        <div class="cronograma-wrapper">
+            <!--Cabeçalho do cronograma-->
+            <div class="cronograma-header">
+                <span class="timee">Horário</span>
+                <span class="activityy">Atividade</span>
+                <span class="locationn">Local</span>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer-div"></div>
+</body>
+<script>
+
+    //carrega o cabeçalho remotamente
+    fetch('cabecalho.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('header-div').innerHTML = data;
+      });
+
+    //carrega o rodapé remotamente
+    fetch('rodape.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('footer-div').innerHTML = data;
+      });
+
+    let cronograma = [
+        {
+            "time": "08:00 - 09:00",
+            "activity": "Credenciamento",
+            "location": "Hall de Entrada"
+        },
+        {
+            "time": "09:00 - 10:30",
+            "activity": "Palestra de Abertura: \"O Futuro da Engenharia de Software\"",
+            "location": "Auditório Principal"
+        },
+        {
+            "time": "10:30 - 11:00",
+            "activity": "Coffee Break",
+            "location": "Espaço de Convivência"
+        },
+        {
+            "time": "11:00 - 12:30",
+            "activity": "Workshops Técnicos",
+            "location": "Salas 101, 102, 103"
+        },
+        {
+            "time": "12:30 - 14:00",
+            "activity": "Intervalo para Almoço",
+            "location": "Refeitório"
+        },
+        {
+            "time": "14:00 - 15:30",
+            "activity": "Apresentação de Trabalhos",
+            "location": "Salas 201, 202"
+        },
+        {
+            "time": "15:30 - 16:00",
+            "activity": "Encerramento e Premiação",
+            "location": "Auditório Principal"
+        }
+    ]
+
+    //cria o cronograma dinamicamente
+    let divCronograma = document.getElementById('cronograma');
+        
+    cronograma.forEach(item => {
+        divCronograma.innerHTML += `<div class="cronograma-item">
+                <span class="time">${item.time}</span>
+                <span class="activity">${item.activity}</span>
+                <span class="location">${item.location}</span>
+            </div>`
+    })
+</script>
+</html>
