@@ -100,9 +100,15 @@ section{
     background-color: #e20712;
 }
 
+a{
+    text-decoration: none;
+}
+
 .destaque{
     color: #e20712;
     font-weight: bold;
+
+
 }
 
 #div-mapa{
