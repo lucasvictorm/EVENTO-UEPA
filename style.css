@@ -20,6 +20,12 @@ html{
     scroll-behavior: smooth;
 }
 
+
+
+#container-geral{
+    margin-top: 180px;
+}
+
 /*configura efeito parallax*/
 .parallax{
     height: 200px;
@@ -68,6 +74,11 @@ section{
 }
 
 @media (max-width: 768px) {
+
+    #container-geral{
+        margin-top: 220px;
+    }
+
     #div-imagens img{
         max-width: 400px;
     }

@@ -3,14 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cronograma</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="cronograma.css">
+    <title>Cronograma - Evento Científico</title>
+    <link rel="stylesheet" href="cronograma2.css">
 </head>
-
 <body>
-    <!--div onde será carregado o cabeçalho remotamente-->
-    <div id="header-div"></div>
     <main class="container">
         <h2>Cronograma</h2>
 
@@ -141,12 +137,13 @@
             </div>
         </div>
     </main>
-    <div id="footer-div"></div>
-</body>
-<script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-<script>
 
-function showSchedule(day) {
+    <footer>
+        <p>&copy; 2025 Evento Científico de Engenharia de Software</p>
+    </footer>
+
+    <script>
+        function showSchedule(day) {
             const days = document.querySelectorAll('.cronograma-wrapper');
             days.forEach(schedule => schedule.classList.remove('active'));
             document.getElementById(day).classList.add('active');
@@ -155,70 +152,6 @@ function showSchedule(day) {
         // Mostrar o cronograma de domingo por padrão
         document.getElementById("day-select").value = "domingo";
         showSchedule('domingo');
-
-    //carrega o cabeçalho remotamente
-    fetch('cabecalho.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('header-div').innerHTML = data;
-      });
-
-    //carrega o rodapé remotamente
-    fetch('rodape.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('footer-div').innerHTML = data;
-      });
-
-    let cronograma = [
-        {
-            "time": "08:00 - 09:00",
-            "activity": "Credenciamento",
-            "location": "Hall de Entrada"
-        },
-        {
-            "time": "09:00 - 10:30",
-            "activity": "Palestra de Abertura: \"O Futuro da Engenharia de Software\"",
-            "location": "Auditório Principal"
-        },
-        {
-            "time": "10:30 - 11:00",
-            "activity": "Coffee Break",
-            "location": "Espaço de Convivência"
-        },
-        {
-            "time": "11:00 - 12:30",
-            "activity": "Workshops Técnicos",
-            "location": "Salas 101, 102, 103"
-        },
-        {
-            "time": "12:30 - 14:00",
-            "activity": "Intervalo para Almoço",
-            "location": "Refeitório"
-        },
-        {
-            "time": "14:00 - 15:30",
-            "activity": "Apresentação de Trabalhos",
-            "location": "Salas 201, 202"
-        },
-        {
-            "time": "15:30 - 16:00",
-            "activity": "Encerramento e Premiação",
-            "location": "Auditório Principal"
-        }
-    ]
-
-    //cria o cronograma dinamicamente
-    let divCronograma = document.getElementById('cronograma');
-        
-    cronograma.forEach(item => {
-        divCronograma.innerHTML += `<div class="cronograma-item">
-                <span class="time">${item.time}</span>
-                <span class="activity">${item.activity}</span>
-                <span class="location">${item.location}</span>
-            </div>`
-    })
-
-    
-</script>
+    </script>
+</body>
 </html>

@@ -10,17 +10,11 @@ body {
 
 .container {
     max-width: 1200px;
-    margin: 240px auto;
+    margin: 2rem auto;
     padding: 0 1rem;
     background: #fff;
     border-radius: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-@media (max-width: 768px) {
-    .container {
-        margin: 300px auto;
-    }
 }
 
 h2 {
@@ -116,4 +110,3 @@ footer a {
 
 footer a:hover {
     text-decoration: underline;
-}
