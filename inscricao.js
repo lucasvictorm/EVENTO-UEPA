@@ -1,22 +1,24 @@
 
     function verificarSelecionados(){
         const select = document.getElementById('opcoes');
-        const listaDeOpcoes = document.getElementById('lista-de-opcoes');
-        tagsP = Array.from(listaDeOpcoes.getElementsByTagName('p'))
+        textos = Array.from(document.getElementsByClassName('texto-opcao-selecionada'))
 
         tagsOpt = Array.from(select.getElementsByTagName('option'))
-
-        tagsP.forEach(tag => {
+        console.log(textos) 
+        textos.forEach(texto => {
             tagsOpt.forEach(opt => {
-                console.log(opt.innerText)
-                console.log(tag.innerText)
-                if(tag.innerText === opt.innerText){
+                
+                if(texto.innerText === opt.innerText){
                     opt.disabled = true;
+                }else{
+                    opt.disabled = false;
                 }
             })
         })
 
     }
+
+    
 
 
     function adicionarEscolha(){
@@ -28,6 +30,7 @@
         const listaDeOpcoes = document.getElementById('lista-de-opcoes');
         const total = document.getElementById('total');
 
+
         let preco = opcaoSelecionada.dataset.preco;
         let texto = opcaoSelecionada.text;
 
@@ -38,8 +41,21 @@
 
         const div = document.createElement('tr');
         div.classList.add('opcao-selecionada');
-        div.innerHTML = `<td>${texto}</td>`;
-        div.innerHTML += `<td class='lixeira'>${'<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e20712"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>'}</td>`;
+        div.innerHTML = `<td class='texto-opcao-selecionada'>${texto}</td>`;
+
+        let lixeira = document.createElement('td');
+        lixeira.innerHTML = `<td'>${'<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e20712"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>'}</td>`;
+        
+        lixeira.classList.add('lixeira');
+        lixeira.addEventListener('click', () => {
+            let preco = parseFloat(opcaoSelecionada.dataset.preco);
+            total.innerText = (parseFloat(total.innerText.replace(',', '.')) - preco).toFixed(2);
+            listaDeOpcoes.removeChild(div);
+            verificarSelecionados();
+        })
+
+        div.appendChild(lixeira);
+        
         listaDeOpcoes.appendChild(div);
 
         verificarSelecionados();

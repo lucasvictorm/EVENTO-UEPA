@@ -178,5 +178,11 @@ main{
 }
 
 .lixeira{
-    
+    cursor: pointer;
+    width: 100px;
+    text-align: center;
+}
+
+#tabela-opcoes{
+    margin-top: 20px;
 }

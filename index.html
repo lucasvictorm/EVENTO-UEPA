@@ -3,8 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"
+    />
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="cronograma.css">
+    
     <title>Evento</title>
 </head>
 <body>
@@ -24,12 +30,22 @@
 
         <div class="linha-destaque"></div>
         <div id="div-imagens">
+            <a href="imagens/galeria/auditorio.jpg" data-fancybox>
+                <img src="imagens/galeria/auditorio.jpg">
+            </a>
             
-                <img src="imagens/galeria/auditorio.jpg" alt="Auditório">
+            <a href="imagens/galeria/bancada.jpg" data-fancybox>
                 <img src="imagens/galeria/bancada.jpg" alt="Bancada">
-           
+            </a>
+
+            <a href="imagens/galeria/ccnt.jpg" data-fancybox>
                 <img src="imagens/galeria/ccnt.jpg" alt="CCNT">
+            </a>
+
+            <a href="imagens/galeria/palestra.jpg" data-fancybox>
                 <img src="imagens/galeria/palestra.jpg" alt="Palestra">
+            </a>
+            
            
             
 
@@ -145,7 +161,9 @@
 </body>
 
 <script>
-
+    Fancybox.bind("[data-fancybox]", {
+    // Your custom options
+    });
   
     
 
