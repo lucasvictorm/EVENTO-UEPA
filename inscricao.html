@@ -39,7 +39,7 @@
                     </div>
                     <div class="col-6">
                         <label for="cpf" class="form-label">CPF <span class="asteristico">*</span></label>
-                      <input required type="number" class="form-control" aria-label="CPF" id="cpf">
+                      <input required type="text" class="form-control" aria-label="CPF" id="cpf">
                       <div class="invalid-feedback">
                         Preencha seu CPF
                       </div>
@@ -89,101 +89,103 @@
                   
 
                   
-                  <div id="div-minicursos">
-                    <h3>Selecione seus minicursos e palestras</h3>
-
-                    <div class="row">
-                        <div class="col-4">
-                            <select onchange="listarOpcoes()" class="form-select" name="palestraMinicurso" id="palestraMinicurso">
-                            <option value="palestra">Palestra</option>
-                            <option value="minicurso">Minicurso</option>
-                        </select>
-                        </div>
-                        
-                        
-                        <div class="col-4">
-                            <select class="form-select col-4" name="opcoes" id="opcoes">
-                                <option data-preco="100.00">A Engenharia de Software na Era da Inteligência Artificial - R$ 100,00</option>
-                                <option data-preco="120.00">DevOps e Engenharia de Software: Estratégias para Maximizar a Produtividade - R$ 120,00</option>
-                                <option data-preco="150.00">Microserviços e Arquitetura Moderna: Desafios e Soluções - R$ 150,00</option>
-                                <option data-preco="80.00">Encerramento do Dia: Painel de Discussão com Especialistas - R$ 80,00</option>
-                            </select>
-                        </div>
-
-                        <button id="btn-adicionar" type="button" onclick="adicionarEscolha()" class="btn col-4">Adicionar</button>
-
-                        
-                    </div>
-                    
-                   
-                    <!--
-                    <table class="table">
-                        <thead>
-                          <tr>
-                            <th scope="col"></th>
-                            <th scope="col">Nome</th>
-                            <th scope="col">Preço</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr onclick="selecionarMinicurso(this, event)">
-                            <th scope="row"><input class="form-check-input" type="checkbox" role="switch" id="introducaoPython"></th>
-                            <td>Introdução à Programação em Python</td>
-                            <td>R$ 150,00</td>
-                            
-                          </tr>
-
-                            <tr onclick="selecionarMinicurso(this, event)">
-                                <th scope="row"><input class="form-check-input" type="checkbox" role="switch" id="marketingDigital"></th>
-                                <td>Marketing Digital para Iniciantes</td>
-                                <td>R$ 120,00</td>
-                            </tr>
-
-                            <tr onclick="selecionarMinicurso(this, event)">
-                                <th scope="row"><input class="form-check-input" type="checkbox" role="switch" id="designGrafico"></th>
-                                <td>Design Gráfico com Canva</td>
-                                <td>R$ 100,00</td>
-                            </tr>
-
-                            <tr onclick="selecionarMinicurso(this, event)">
-                                <th scope="row"><input class="form-check-input" type="checkbox" role="switch" id="fotografiaSmartphone"></th>
-                                <td>Fotografia com Smartphone</td>
-                                <td>R$ 80,00</td>
-                            </tr>
-
-                            <tr onclick="selecionarMinicurso(this, event)">
-                                <th scope="row"><input class="form-check-input" type="checkbox" role="switch" id="gestaoProjetos"></th>
-                                <td>Gestão de Projetos com Trello</td>
-                                <td>R$ 130,00</td>
-                            </tr>
-
-                            <tr onclick="selecionarMinicurso(this, event)">
-                                <th scope="row"><input class="form-check-input" type="checkbox" role="switch" id="introducaoWeb"></th>
-                                <td>Introdução ao Desenvolvimento Web</td>
-                                <td>R$ 170,00</td>
-                        <tbody>     
-                    </table>
-                    -->
-
-                    <table id="tabela-opcoes" class="table">
-                      
-                      <tbody id="lista-de-opcoes">
-                        
-
-                      </tbody>
-
-                    </table>
-                    <div>
-                        <p id="totalP">Total: R$ <span id="total">20,00</span></p>
-                    </div>
-                  </div>
-                  <div id="div-confirmar">
-                    <button class="btn" type="submit" id="botao-confirmar">Confirmar inscrição</button>
-                  </div>
-                  
+                 
                   
 
             </form>
+
+            <div id="div-minicursos">
+              <h3>Selecione seus minicursos e palestras</h3>
+
+              <div class="row">
+                  <div class="col-4">
+                      <select onchange="listarOpcoes()" class="form-select" name="palestraMinicurso" id="palestraMinicurso">
+                      <option value="palestra">Palestra</option>
+                      <option value="minicurso">Minicurso</option>
+                  </select>
+                  </div>
+                  
+                  
+                  <div class="col-4">
+                      <select class="form-select col-4" name="opcoes" id="opcoes">
+                          <option data-preco="100.00">A Engenharia de Software na Era da Inteligência Artificial - R$ 100,00</option>
+                          <option data-preco="120.00">DevOps e Engenharia de Software: Estratégias para Maximizar a Produtividade - R$ 120,00</option>
+                          <option data-preco="150.00">Microserviços e Arquitetura Moderna: Desafios e Soluções - R$ 150,00</option>
+                          <option data-preco="80.00">Encerramento do Dia: Painel de Discussão com Especialistas - R$ 80,00</option>
+                      </select>
+                  </div>
+
+                  <button id="btn-adicionar" type="button" onclick="adicionarEscolha()" class="btn col-4">Adicionar</button>
+
+                  
+              </div>
+              
+             
+              <!--
+              <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col"></th>
+                      <th scope="col">Nome</th>
+                      <th scope="col">Preço</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr onclick="selecionarMinicurso(this, event)">
+                      <th scope="row"><input class="form-check-input" type="checkbox" role="switch" id="introducaoPython"></th>
+                      <td>Introdução à Programação em Python</td>
+                      <td>R$ 150,00</td>
+                      
+                    </tr>
+
+                      <tr onclick="selecionarMinicurso(this, event)">
+                          <th scope="row"><input class="form-check-input" type="checkbox" role="switch" id="marketingDigital"></th>
+                          <td>Marketing Digital para Iniciantes</td>
+                          <td>R$ 120,00</td>
+                      </tr>
+
+                      <tr onclick="selecionarMinicurso(this, event)">
+                          <th scope="row"><input class="form-check-input" type="checkbox" role="switch" id="designGrafico"></th>
+                          <td>Design Gráfico com Canva</td>
+                          <td>R$ 100,00</td>
+                      </tr>
+
+                      <tr onclick="selecionarMinicurso(this, event)">
+                          <th scope="row"><input class="form-check-input" type="checkbox" role="switch" id="fotografiaSmartphone"></th>
+                          <td>Fotografia com Smartphone</td>
+                          <td>R$ 80,00</td>
+                      </tr>
+
+                      <tr onclick="selecionarMinicurso(this, event)">
+                          <th scope="row"><input class="form-check-input" type="checkbox" role="switch" id="gestaoProjetos"></th>
+                          <td>Gestão de Projetos com Trello</td>
+                          <td>R$ 130,00</td>
+                      </tr>
+
+                      <tr onclick="selecionarMinicurso(this, event)">
+                          <th scope="row"><input class="form-check-input" type="checkbox" role="switch" id="introducaoWeb"></th>
+                          <td>Introdução ao Desenvolvimento Web</td>
+                          <td>R$ 170,00</td>
+                  <tbody>     
+              </table>
+              -->
+
+              <table id="tabela-opcoes" class="table">
+                
+                <tbody id="lista-de-opcoes">
+                  
+
+                </tbody>
+
+              </table>
+              <div>
+                  <p id="totalP">Total: R$ <span id="total">20,00</span></p>
+              </div>
+            </div>
+            <div id="div-confirmar">
+              <button class="btn" type="submit" form="formulario" id="botao-confirmar" >Confirmar inscrição</button>
+            </div>
+            
             </div>
             
             
