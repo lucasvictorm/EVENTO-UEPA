@@ -49,6 +49,10 @@ body {
     text-align: center;
 }
 
+#nav-lista{
+    gap: 10px;
+}
+
 .nav-list {
     list-style: none;
     margin: 0;
@@ -75,6 +79,16 @@ body {
     background-color: #e20712;
 }
 
+#inscricao{
+    background-color: #e20712;
+    border-radius: 10px;
+
+    
+}
+
+#inscricao:hover{
+    color: white;
+}
 
 @media (max-width: 768px) {
     .site-header {
@@ -134,7 +148,7 @@ body {
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav" id="nav-lista">
               <li class="nav-item">
                 <li><a href="./index.html" class="nav-link">Sobre o Evento</a></li>
               </li>
@@ -145,7 +159,7 @@ body {
                 <li><a href="./parceiros.html" class="nav-link">Parceiros</a></li>
               </li>
               <li class="nav-item">
-                <li><a href="./inscricao.html" class="nav-link">Inscrição</a></li>
+                <li><a href="./inscricao.html" id="inscricao" class="nav-link">Inscrição</a></li>
               </li>
               
             </ul>

@@ -1,22 +1,27 @@
 
-    function verificarSelecionados(){
-        const select = document.getElementById('opcoes');
-        textos = Array.from(document.getElementsByClassName('texto-opcao-selecionada'))
+function alterarOpcao(){
+    document.getElementById('aviso-evento-selecionado').style.display = 'none';
+}
 
-        tagsOpt = Array.from(select.getElementsByTagName('option'))
-        console.log(textos) 
-        textos.forEach(texto => {
-            tagsOpt.forEach(opt => {
-                
-                if(texto.innerText === opt.innerText){
-                    opt.disabled = true;
-                }else{
-                    opt.disabled = false;
-                }
-            })
-        })
 
-    }
+function verificarSelecionados() {
+    console.log('verificando');
+    const select = document.getElementById('opcoes');
+    const textosSelecionados = Array.from(document.getElementsByClassName('texto-opcao-selecionada')).map(
+        texto => texto.innerText.trim()
+    );
+
+    const tagsOpt = Array.from(select.getElementsByTagName('option'));
+
+    tagsOpt.forEach(opt => {
+       
+        if (textosSelecionados.includes(opt.innerText.trim())) {
+            opt.disabled = true;
+        } else {
+            opt.disabled = false;
+        }
+    });
+}
 
     
 
@@ -25,8 +30,11 @@
         const select = document.getElementById('opcoes');
         let opcaoSelecionada = select.options[select.selectedIndex];
         if(opcaoSelecionada.disabled){
+            document.getElementById('aviso-evento-selecionado').style.display = 'block';
             return;
         }
+        document.getElementById('aviso-evento-selecionado').style.display = 'none';
+
         const listaDeOpcoes = document.getElementById('lista-de-opcoes');
         const total = document.getElementById('total');
 
@@ -65,6 +73,7 @@
     }
 
     function listarOpcoes() {
+        document.getElementById('aviso-evento-selecionado').style.display = 'none';
         const eventos = {
     palestra: [
         {
@@ -131,7 +140,7 @@
 
 
     function selecionarMinicurso(linha, event) {
-        
+        document.getElementById('aviso-evento-selecionado').style.display = 'none';
         const checkbox = linha.querySelector('.form-check-input');
 
         let totalAtual = parseFloat(document.getElementById('total').innerText.replace(',', '.'));

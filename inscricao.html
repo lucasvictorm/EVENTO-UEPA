@@ -59,7 +59,7 @@
                         <select required class="form-select" name="categoria" id="Categoria">
                             <option value="estudante">Estudante</option>
                             <option value="professor">Professor</option>
-                            <option value="pesquisador">Pesquisador</option>
+                            <option value="pesquisador">Profissional de TI</option>
 
 
                         </select>
@@ -106,7 +106,7 @@
                   </div>
                   
                   
-                  <div class="col-4">
+                  <div class="col-4" onchange="alterarOpcao()">
                       <select class="form-select col-4" name="opcoes" id="opcoes">
                           <option data-preco="100.00">A Engenharia de Software na Era da Inteligência Artificial - R$ 100,00</option>
                           <option data-preco="120.00">DevOps e Engenharia de Software: Estratégias para Maximizar a Produtividade - R$ 120,00</option>
@@ -116,7 +116,7 @@
                   </div>
 
                   <button id="btn-adicionar" type="button" onclick="adicionarEscolha()" class="btn col-4">Adicionar</button>
-
+                  <p id="aviso-evento-selecionado">Evento já selecionado</p>
                   
               </div>
               
