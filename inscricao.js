@@ -1,11 +1,36 @@
 
+
+function listarPalestras(){
+    fetch('http://localhost:8080/evento-uepa/actions/listarEventos.php?categoria=Palestra')
+    .then(response => response.json())
+    .then(data => {
+        console.log(data)
+        listarOpcoes(data)
+    })
+}
+
+async function listar(categoria){
+    let eventos = [];
+    await fetch(`http://localhost:8080/evento-uepa/actions/listarEventos.php?categoria=${categoria}`, )
+    .then(response => response.json())
+    .then(data => {
+        
+        eventos = data;
+    })
+    
+    return eventos
+}
+
 function alterarOpcao(){
     document.getElementById('aviso-evento-selecionado').style.display = 'none';
+
+
+
 }
 
 
 function verificarSelecionados() {
-    console.log('verificando');
+    
     const select = document.getElementById('opcoes');
     const textosSelecionados = Array.from(document.getElementsByClassName('texto-opcao-selecionada')).map(
         texto => texto.innerText.trim()
@@ -22,9 +47,6 @@ function verificarSelecionados() {
         }
     });
 }
-
-    
-
 
     function adicionarEscolha(){
         const select = document.getElementById('opcoes');
@@ -72,67 +94,39 @@ function verificarSelecionados() {
         
     }
 
-    function listarOpcoes() {
+   async function listarOpcoes() {
         document.getElementById('aviso-evento-selecionado').style.display = 'none';
-        const eventos = {
-    palestra: [
-        {
-            nome: "A Engenharia de Software na Era da Inteligência Artificial - R$ 100,00",
-            preco: 100.00
-        },
-        {
-            nome: "DevOps e Engenharia de Software: Estratégias para Maximizar a Produtividade - R$ 120,00",
-            preco: 120.00
-        },
-        {
-            nome: "Microserviços e Arquitetura Moderna: Desafios e Soluções - R$ 150,00",
-            preco: 150.00
-        },
-        {
-            nome: "Encerramento do Dia: Painel de Discussão com Especialistas - R$ 80,00",
-            preco: 80.00
-        }
-    ],
-    minicurso: [
-        {
-            nome: "Introdução à Programação em Python - R$ 150,00",
-            preco: 150.00
-        },
-        {
-            nome: "Marketing Digital para Iniciantes - R$ 120,00",
-            preco: 120.00
-        },
-        {
-            nome: "Design Gráfico com Canva - R$ 100,00",
-            preco: 100.00
-        },
-        {
-            nome: "Fotografia com Smartphone - R$ 80,00",
-            preco: 80.00
-        },
-        {
-            nome: "Gestão de Projetos com Trello - R$ 130,00",
-            preco: 130.00
-        },
-        {
-            nome: "Introdução ao Desenvolvimento Web - R$ 170,00",
-            preco: 170.00
-        }
-    ]
-};
-
         
         const tipoEvento = document.getElementById('palestraMinicurso').value;
         const opcoes = document.getElementById('opcoes');
 
+        let eventos = await listar(tipoEvento);
         opcoes.innerHTML = '';
+        
+        eventos.forEach(evento => {
 
+            if(evento.categoria === tipoEvento){
+                const option = document.createElement('option');
+                option.innerText = evento.nome;
+                option.dataset.preco = evento.preco;
+                opcoes.appendChild(option);
+            }
+
+            
+            
+        });
+
+
+       
+/*
         eventos[tipoEvento].forEach(opcao => {
             const option = document.createElement('option');
             option.innerText = opcao.nome;
             option.dataset.preco = opcao.preco;
             opcoes.appendChild(option);
-        });
+
+            
+        });*/
 
         verificarSelecionados()
 
@@ -175,17 +169,26 @@ function verificarSelecionados() {
     (() => {
   'use strict'
 
+  listarPalestras();
+
   // Fetch all the forms we want to apply custom Bootstrap validation styles to
   const forms = document.querySelectorAll('.needs-validation')
 
   // Loop over them and prevent submission
-  Array.from(forms).forEach(form => {
-    form.addEventListener('submit', event => {
+  Array.from(forms).forEach( form => {
+    form.addEventListener('submit', async event => {
       if (!form.checkValidity()) {
         event.preventDefault()
         event.stopPropagation()
       }else{
+        
         event.preventDefault()
+         fetch('http://localhost:8080/evento-uepa/actions/inscrever.php', {
+            method: 'POST',
+            body: new FormData(form)
+        })
+        .then(response => response.json())
+        .then(data => console.log(data));
         document.getElementById('div-formulario-principal').style.display = 'none';
         document.getElementById('div-confirmacao').style.display = 'flex';
       }

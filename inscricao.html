@@ -32,14 +32,14 @@
                     
                     <div class="col-6">
                         <label for="nome" class="form-label">Nome Completo <span class="asteristico">*</span></label>
-                      <input  type="text" class="form-control" aria-label="Nome completo" id="nome" required>
+                      <input  type="text" class="form-control" aria-label="Nome completo" id="nome" name="nome" required>
                       <div class="invalid-feedback">
                         Preencha seu nome
                       </div>
                     </div>
                     <div class="col-6">
                         <label for="cpf" class="form-label">CPF <span class="asteristico">*</span></label>
-                      <input required type="text" class="form-control" aria-label="CPF" id="cpf">
+                      <input required type="text" name="cpf" class="form-control" aria-label="CPF" id="cpf">
                       <div class="invalid-feedback">
                         Preencha seu CPF
                       </div>
@@ -47,7 +47,7 @@
 
                     <div class="col-6">
                         <label for="data-nascimento" class="form-label">Data de nascimento <span class="asteristico">*</span></label>
-                        <input required type="date" class="form-control" id="data-nascimento">
+                        <input required type="date" name="dataDeNasc" class="form-control" id="data-nascimento">
                         <div class="invalid-feedback">
                             Informe sua data de nascimento
                           </div>
@@ -69,7 +69,7 @@
                     
                         <div class="col-6">
                             <label for="email" class="form-label">Email <span class="asteristico">*</span></label>
-                          <input required type="email" class="form-control" aria-label="email" id="email">
+                          <input required type="email" name="email" class="form-control" aria-label="email" id="email">
                           <div class="invalid-feedback">
                             Informe um email válido
                           </div>
@@ -78,7 +78,7 @@
                         
                         <div class="col-6">
                             <label for="whatsapp" class="form-label">Whatsapp </label>
-                          <input type="number" class="form-control" aria-label="Nome completo" id="nome">
+                          <input type="number" name="whatsapp" class="form-control" aria-label="whatsapp" id="nome">
                         </div>
 
                         <p id="campo-obrigatorio-p">* Campo obrigatório</p>
@@ -100,18 +100,15 @@
               <div class="row">
                   <div class="col-4">
                       <select onchange="listarOpcoes()" class="form-select" name="palestraMinicurso" id="palestraMinicurso">
-                      <option value="palestra">Palestra</option>
-                      <option value="minicurso">Minicurso</option>
+                      <option value="Palestra">Palestra</option>
+                      <option value="Minicurso">Minicurso</option>
                   </select>
                   </div>
                   
                   
                   <div class="col-4" onchange="alterarOpcao()">
                       <select class="form-select col-4" name="opcoes" id="opcoes">
-                          <option data-preco="100.00">A Engenharia de Software na Era da Inteligência Artificial - R$ 100,00</option>
-                          <option data-preco="120.00">DevOps e Engenharia de Software: Estratégias para Maximizar a Produtividade - R$ 120,00</option>
-                          <option data-preco="150.00">Microserviços e Arquitetura Moderna: Desafios e Soluções - R$ 150,00</option>
-                          <option data-preco="80.00">Encerramento do Dia: Painel de Discussão com Especialistas - R$ 80,00</option>
+                          
                       </select>
                   </div>
 
@@ -121,54 +118,7 @@
               </div>
               
              
-              <!--
-              <table class="table">
-                  <thead>
-                    <tr>
-                      <th scope="col"></th>
-                      <th scope="col">Nome</th>
-                      <th scope="col">Preço</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr onclick="selecionarMinicurso(this, event)">
-                      <th scope="row"><input class="form-check-input" type="checkbox" role="switch" id="introducaoPython"></th>
-                      <td>Introdução à Programação em Python</td>
-                      <td>R$ 150,00</td>
-                      
-                    </tr>
-
-                      <tr onclick="selecionarMinicurso(this, event)">
-                          <th scope="row"><input class="form-check-input" type="checkbox" role="switch" id="marketingDigital"></th>
-                          <td>Marketing Digital para Iniciantes</td>
-                          <td>R$ 120,00</td>
-                      </tr>
-
-                      <tr onclick="selecionarMinicurso(this, event)">
-                          <th scope="row"><input class="form-check-input" type="checkbox" role="switch" id="designGrafico"></th>
-                          <td>Design Gráfico com Canva</td>
-                          <td>R$ 100,00</td>
-                      </tr>
-
-                      <tr onclick="selecionarMinicurso(this, event)">
-                          <th scope="row"><input class="form-check-input" type="checkbox" role="switch" id="fotografiaSmartphone"></th>
-                          <td>Fotografia com Smartphone</td>
-                          <td>R$ 80,00</td>
-                      </tr>
-
-                      <tr onclick="selecionarMinicurso(this, event)">
-                          <th scope="row"><input class="form-check-input" type="checkbox" role="switch" id="gestaoProjetos"></th>
-                          <td>Gestão de Projetos com Trello</td>
-                          <td>R$ 130,00</td>
-                      </tr>
-
-                      <tr onclick="selecionarMinicurso(this, event)">
-                          <th scope="row"><input class="form-check-input" type="checkbox" role="switch" id="introducaoWeb"></th>
-                          <td>Introdução ao Desenvolvimento Web</td>
-                          <td>R$ 170,00</td>
-                  <tbody>     
-              </table>
-              -->
+             
 
               <table id="tabela-opcoes" class="table">
                 
