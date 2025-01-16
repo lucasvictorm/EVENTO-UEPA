@@ -1,15 +1,7 @@
 
 
-function listarPalestras(){
-    fetch('http://localhost:8080/evento-uepa/actions/listarEventos.php?categoria=Palestra')
-    .then(response => response.json())
-    .then(data => {
-        console.log(data)
-        listarOpcoes(data)
-    })
-}
 
-async function listar(categoria){
+async function listar(categoria='Palestra'){
     let eventos = [];
     await fetch(`http://localhost:8080/evento-uepa/actions/listarEventos.php?categoria=${categoria}`, )
     .then(response => response.json())
@@ -71,7 +63,7 @@ function verificarSelecionados() {
 
         const div = document.createElement('tr');
         div.classList.add('opcao-selecionada');
-        div.innerHTML = `<td class='texto-opcao-selecionada'>${texto}</td>`;
+        div.innerHTML = `<td class='texto-opcao-selecionada' data-id=${opcaoSelecionada.dataset.id}>${texto}</td>`;
 
         let lixeira = document.createElement('td');
         lixeira.innerHTML = `<td'>${'<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e20712"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>'}</td>`;
@@ -109,6 +101,7 @@ function verificarSelecionados() {
                 const option = document.createElement('option');
                 option.innerText = evento.nome;
                 option.dataset.preco = evento.preco;
+                option.dataset.id = evento.id;
                 opcoes.appendChild(option);
             }
 
@@ -116,17 +109,6 @@ function verificarSelecionados() {
             
         });
 
-
-       
-/*
-        eventos[tipoEvento].forEach(opcao => {
-            const option = document.createElement('option');
-            option.innerText = opcao.nome;
-            option.dataset.preco = opcao.preco;
-            opcoes.appendChild(option);
-
-            
-        });*/
 
         verificarSelecionados()
 
@@ -169,7 +151,7 @@ function verificarSelecionados() {
     (() => {
   'use strict'
 
-  listarPalestras();
+  listarOpcoes();
 
   // Fetch all the forms we want to apply custom Bootstrap validation styles to
   const forms = document.querySelectorAll('.needs-validation')
@@ -181,14 +163,20 @@ function verificarSelecionados() {
         event.preventDefault()
         event.stopPropagation()
       }else{
-        
+    
+
         event.preventDefault()
-         fetch('http://localhost:8080/evento-uepa/actions/inscrever.php', {
+
+        let formulario = new FormData(form)
+        formulario.append('opcoes', Array.from(document.getElementsByClassName('texto-opcao-selecionada'))
+        .map(opcao => opcao.dataset.id) // Pegando o valor do dataset id
+        .join(','))
+        
+         await fetch('http://localhost:8080/evento-uepa/actions/inscrever.php', {
             method: 'POST',
-            body: new FormData(form)
-        })
-        .then(response => response.json())
-        .then(data => console.log(data));
+            body: formulario
+        }).then(response => response.json())
+        .then(data => console.log(data))
         document.getElementById('div-formulario-principal').style.display = 'none';
         document.getElementById('div-confirmacao').style.display = 'flex';
       }
