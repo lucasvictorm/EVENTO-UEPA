@@ -134,7 +134,7 @@ body {
             <img src="imagens/LOGO_CRES.png" alt="Logo 2" class="logo">
         </div>
         <div id="separador"></div>
-        <div class="titulo">
+        <div class="titulo" id="tituloCabecalho">
             <h1>Conferência regional de engenharia de Software</h1>
         </div>
     </header>
@@ -184,6 +184,17 @@ body {
     </nav>
     </div>
 </body>
+
+<script>
+    fetch('http://localhost:8080/evento-uepa/gerenciarEvento/carregarEvento.php')
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        document.getElementById('tituloCabecalho').innerText = data.nome;
+    })
+    console
+        //document.getElementById('tituloCabecalho').innerText = 
+</script>
 <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 
 
